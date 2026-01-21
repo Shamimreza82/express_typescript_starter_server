@@ -5,10 +5,11 @@ import cors from 'cors';
 import morgan from 'morgan';
 
 import { notFound } from './middlewares/notFound';
-import { errorHandler } from './middlewares/errorHandler';
+
 import { swaggerSpec } from './lib/document/swagger';
 
 import { RootRouter } from './routes/rootRouter';
+import { globalErrorHandler } from './middlewares/errorHandler';
 
 const app: Application = express();
 
@@ -27,6 +28,6 @@ app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
 
 // 404 and Error Handler
 app.use(notFound);
-app.use(errorHandler);
+app.use(globalErrorHandler);
 
 export default app;

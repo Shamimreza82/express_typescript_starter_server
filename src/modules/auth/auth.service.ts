@@ -31,7 +31,7 @@ const login = async (payload: TUser) => {
         }
     })
     if (!result) {
-        throw new Error("result not found")
+        throw new Error("User not found")
     }
 
     const jwtPayload = {
@@ -43,8 +43,10 @@ const login = async (payload: TUser) => {
         // updatedAt: result.updatedAt
     }
 
-    const token = jwt.sign(jwtPayload, process.env.JWT_SECRET as string, {
-        expiresIn: "1d"
+    
+
+    const token = jwt.sign(jwtPayload, process.env.JWT_SECRET || "ebdwegweuweurgweurguwer6734873457" as string, {
+        expiresIn: "7d"
     })
     console.log(token)
 

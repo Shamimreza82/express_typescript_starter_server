@@ -28,18 +28,17 @@ const {token} = await AuthService.login(req.body)
         secure: process.env.NODE_ENV === 'production',
     }
     
-  res.cookie('accessTokenAuth', token, cookieOptions)
+  res.cookie('token', token, cookieOptions)
 
   res.status(201).json({
     status: "success",
     message: "User Login successfully",
-    data: {accessToken: token},
+    data: {token: token},
 })
-
 })
 
 const  getAllUsers = catchAsync(async (req, res) => {
-
+  
 
 const result = await AuthService.getAllUsers()
 

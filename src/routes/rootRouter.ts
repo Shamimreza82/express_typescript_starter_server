@@ -12,7 +12,6 @@ const appRoutes = [
         path: "/auth",
         route: Authrouter,
     },
-  
 ]
 
 appRoutes.forEach((route) => {router.use(route.path, route.route)});
